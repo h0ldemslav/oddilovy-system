@@ -1,0 +1,12 @@
+dt {
+    padding-block-end: 0;
+} 
+
+dd {
+    padding-inline-start: 0;
+    position: static;
+}
+
+label {
+    width: 50px;
+}

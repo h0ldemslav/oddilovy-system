@@ -1,0 +1,25 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form_field.jinja' import render_field with context %}
+
+{% block content %}
+  <section>
+    <form method=post>
+        <dl>
+          {{ render_field(register_form.login) }}
+          {{ render_field(register_form.heslo) }}
+          {{ render_field(register_form.rodne_cislo) }}
+          {{ render_field(register_form.jmeno) }}
+          {{ render_field(register_form.prijmeni) }}
+          {{ render_field(register_form.adresa) }}
+          {{ render_field(register_form.telefon) }}
+          {{ render_field(register_form.email) }}
+          {{ render_field(register_form.datum_narozeni) }}
+          {{ render_field(register_form.id_rodice) }}
+          {{ render_field(register_form.id_role) }}
+          {{ render_field(register_form.id_druzina_vede) }}
+          {{ render_field(register_form.id_druzina_clenem) }}
+        </dl>
+        <input class="register" type="submit" value=Zaregistrovat>
+      </form>
+  </section>
+{% endblock %}

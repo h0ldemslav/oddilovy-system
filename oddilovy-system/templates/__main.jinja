@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>1. oddíl Orli</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/orli.png')}}" type="image/x-icon">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/colors.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/sign_in.css') }}" type="text/css">
+        {% block cssstyles %}
+        {% endblock %}
+    </head>
+    <body>
+        <!-- Navigation -->
+        {% include '__nav.jinja' %}
+
+        <main>
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes style="position: relative; top: 1em; list-style-type: none; padding-inline-start: 0.5em; margin: 0;">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        <!-- Render main -->
+        {% block content %}
+        {% endblock %}
+        </main>
+
+        <!-- Footer -->
+        {% include '__footer.jinja' %}
+    </body>
+</html>

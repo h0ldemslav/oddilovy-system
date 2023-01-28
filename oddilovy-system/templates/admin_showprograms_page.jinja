@@ -1,0 +1,32 @@
+{% extends '__main.jinja' %}
+{# {% from 'macros/form_field.jinja' import render_field with context %} #}
+
+{% block cssstyles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/events_more.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/events.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}   
+    <section>
+      <h2>Aktuální programy</h2>
+          {% for p in program %}
+            <ul style="list-style-type: none; padding-inline-start: 0.3em;">
+              <li>Místo programu: {{ p.misto_program }}</li>
+              <li>Popis: {{ p.popis_program }}</li> 
+              <li>Délka: {{ p.delka }}</li> 
+              <li>Doporučený věk:
+              {% if p.doporuceny_vek %}
+                  {{ p.doporuceny_vek }}
+              {% else %}
+                {{ 0 }}
+              {% endif %}
+              </li>
+            </ul>
+            <a href="{{ url_for('admin.delete_program', id=p.id_program) }}" class="button">Smazat</a>
+            <a href="{{ url_for('admin.edit_program') }}?id_program={{ p.id_program }}" class="button">Upravit</a>
+            
+
+            
+          {% endfor %}
+    </section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends '__main.jinja' %}
+
+{% block content %}
+    <section>
+        <h2>Moje osobní údaje</h2>
+        <ul style="list-style-type: circle;">
+            <li>Identifikační číslo: {{ user_personal_data.id_user }} </li>
+            <li>Jméno: {{ user_personal_data.jmeno }}</li>
+            <li>Příjmení: {{ user_personal_data.prijmeni }}</li>
+            <li>Adresa: {{ user_personal_data.adresa }}</li>
+            <li>Telefon: +{{ user_personal_data.telefon }}</li>
+            <li>Email: {{ user_personal_data.email }}</li>
+        </ul>
+        {% if session['authenticated'] and session['role'] == 'rodic'%}
+            <h2> Moje děti </h2>
+            {% for dite in deti %}
+                <h3>{{ dite.jmeno }} {{ dite.prijmeni }}</h3>
+                 <ul style="list-style-type: circle;">
+                    <li>ID: {{ dite.id_user }}</li>
+                    <li>Jméno: {{ dite.jmeno }}</li>
+                    <li>Příjmení: {{ dite.prijmeni }}</li>
+                    <li>Adresa: {{ dite.adresa }}</li>
+                    <li>Telefon: {{ dite.telefon }}</li>
+                    <li>Email: {{ dite.email }}</li>
+                 </ul>
+            {% endfor %}
+        {% endif %}
+    </section>
+{% endblock %}

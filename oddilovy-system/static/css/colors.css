@@ -1,0 +1,25 @@
+main {
+    background: white;
+}
+
+body{
+    background: lightgray;
+}
+
+footer {
+    background: #B8860BFF
+}
+
+nav a {
+    text-decoration: none;
+    background: none;
+    color: black;
+}
+
+nav ul li {
+    background: #B8860BFF;
+}
+
+nav ul li:hover {
+    background: darkgrey;
+}

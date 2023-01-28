@@ -1,0 +1,79 @@
+/* General */
+
+section {
+    padding: 0.7em;
+    font-size: 15px;
+}
+
+.uvod_akci,
+.o_akcich {
+    text-align: justify;
+}
+
+.uvod_fotka,
+.fotka_akce {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.fotky_kontejner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-inline: 0.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Mobile */
+
+@media (min-width: 550px) {      
+    .uvod_fotka {
+        width: 80%;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .fotky_kontejner {
+        flex-direction: row;
+    }
+
+    .fotka_akce {
+        width: 50%;
+    }
+}
+
+@media (min-width: 750px) {
+    .uvod_fotka {
+        float: right;
+        width: 50%;
+        margin-inline-end: 2em;
+    }
+
+    .uvod_akci p {
+        width: 40%;
+        float: left;
+    }
+
+    .uvod_akci {
+        overflow: hidden;
+
+    }
+}
+
+@media(min-width: 900px) {
+    .uvod_fotka {
+        float: none;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .uvod_akci p {
+        float: none;
+        width: auto;
+    }
+
+    .uvod_akci {
+        overflow: visible;
+    }
+}

@@ -1,0 +1,134 @@
+/* General */
+
+h2 {
+    margin: 0;
+}
+
+.events {
+    list-style-type: none;
+    padding-inline-start: 0;
+    margin-block-end: 1.5em;
+}
+
+.events li {
+    margin-block-start: 0.5em;
+}
+
+.events li a {
+    display: inline-block;
+    padding-inline-end: 0.5em;
+}
+
+input[type="checkbox"] {
+    margin-inline-start: 2em;
+}
+
+.special-food div {
+    display: block;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: rgb(184, 134, 11);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+    /* padding: 14px; */
+    max-width: 100%;
+    height: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+.button span {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    transition: 0.5s;
+}
+
+a.button-dochazka:-webkit-any-link {
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    display: block;
+}
+
+.button span:after,
+.child_selection h2:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after,
+.child_selection:hover h2:after {
+    opacity: 1;
+    right: 0;
+}
+
+.child_selection {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.5s;
+    border-radius: 3px;
+    margin-block-start: 1em;
+}
+
+.child_selection a {
+    text-decoration: none;
+    padding: 12px 16px;
+    color: black;
+    display: block
+}
+
+.child_selection h2 {
+    background-color: rgb(184, 134, 11);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.dropdown-header {
+    background-color: rgb(184, 134, 11);
+    max-width: 100%;
+    height: 35px;
+    padding: 14px 28px 14px 28px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 4px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a:hover {
+    background-color: darkgrey;
+}
+
+.child_selection:hover .dropdown-content {
+    display: block;
+}
+
+.child_selection:hover h2 {
+    padding-right: 30px;
+}

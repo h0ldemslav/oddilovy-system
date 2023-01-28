@@ -1,0 +1,35 @@
+{% extends '__main.jinja' %}
+
+{% block content %}
+    <section>
+        <h2>Docházka 
+            {% if jmeno_akce %}
+                {{ '- ' + jmeno_akce }}
+            {% endif %}
+        </h2>
+        {% if children %}
+        <form action="#" method="POST">
+        {% for child in children %}
+            <ul>
+                <li>Jméno: {{ child.jmeno_ditete }}</li>
+                <li>Příjmění: {{ child.prijmeni_ditete }}</li>
+                <li>Adresa: {{ child.adresa }}</li>
+                <li>Telefon: {{ child.telefon }}</li>
+                <li>Email: {{ child.email }} </li>
+                <li>Byl přítomný/á: 
+                    <input id="dochazka_ano"name="dochazka_ditete_{{ child.id_user }}" type="radio" value="1" required>
+                    <label style="width: 50px;" for="dochazka_ano">Ano</label>
+                    <input id="dochazka_ne" name="dochazka_ditete_{{ child.id_user }}" type="radio" value="0" required>
+                    <label style="width: 50px;" for="dochazka_ne">Ne</label>
+                    <input name="id_dite_{{ child.id_user }}" type="hidden" value="{{ child.id_user }}">
+                </li>
+                <li>Důvod absence: <input name="dochazka_duvod_{{ child.id_user }}" value=""></li>
+            </ul>
+        {% endfor %}
+            <button class="register" type="submit">Odeslát docházku</button>
+        </form>
+        {% else %}
+            <p>Zatím nikdo není přihlášen</p>
+        {% endif %}
+    </section>
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends '__main.jinja' %}
+
+{% block cssstyles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/events_more.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <section class="child_selection">
+        {% if session['authenticated'] and session['role'] == 'rodic' %}
+            {% if child_name != "" %}
+                <div class="dropdown-header">
+                    <h2>{{ child_name }}</h2>
+                </div>
+                <div class="dropdown-content">
+                    {% for dite in deti %}
+                        <a href="?child_id={{ dite.id_user }}">{{ dite.jmeno }} {{ dite.prijmeni }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endif %}
+    </section>
+    <section>
+        <h2>Nejblížší akce</h2>
+        <ul class="events">
+            <li>Název: {{ akce[0].jmeno }}</li>
+            <li>Místo: {{ akce[0].misto }}</li>
+            <li>Datum: {{ akce[0].datum }}</li>
+            <li><strong>Začátek akce: {{ akce[0].zacatek_akce }}</strong></li>
+            <li><strong>Konec akce: {{ akce[0].konec_akce }}</strong></li>
+            <li>Družiny:
+                {% if druziny %}
+                    {% for d in druziny if akce[0].id_akce == d.id_akce %}
+                        {{ d.jmeno_druziny }}
+                    {% endfor %}
+                {% endif %}
+            </li>
+            <li>Vedoucí: 
+                {% if akce[0].vedouci_jmeno %}
+                    {% for a in akce %}
+                        {% if a.id_akce == akce[0].id_akce %}
+                            <a href="{{ url_for('unregistered_user.view_home_page') }}#home-vedouci">
+                            {{ a.vedouci_jmeno }} {{ a.vedouci_prijmeni }} </a>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {{ 'žádný' }}
+                {% endif %}
+            </li>
+            <li class="event-description">Popis: {{ akce[0].popis }}</li>
+            {% if session['role'] in ('vedouci', 'administrator') %}
+                <li>    
+                    <a href="{{ url_for('events_more.view_attendance_page') }}?id_akce={{ akce[0].id_akce }}&jmeno_akce={{ akce[0].jmeno }}">Docházka</a>
+                    {% if akce[0].je_public == 0 %}
+                        <a href="?id_akce={{ akce[0].id_akce }}">Zveřejnit</a>
+                    {% endif %}
+                    <a href="{{ url_for('events_more.edit_event') }}?id_akce={{ akce[0].id_akce }}">Upravit</a>
+                    <a href="{{ url_for('events_more.delete_event') }}?id_akce={{ akce[0].id_akce }}">Smazat</a>
+                </li>
+        {% endif %}
+        </ul>
+        {% if session['role'] == 'dite' and je_prihlaseno_dite %}
+            <h3>Speciální propozice</h3>
+            <h4>Stravování</h4>
+            <form class="special-food" action="#">
+                <div>
+                    <label for="svickova">Svíčková</label>
+                    <input id="svickova" name="food_1" type="checkbox" value="svickova">
+                </div>
+                <div>
+                    <label for="rizek">Řízek</label>
+                    <input id="rizek" name="food_2" type="checkbox" value="rizek">
+                </div>
+                <div>
+                    <label for="spenat">Špenát</label>
+                    <input id="spenat" name="food_3" type="checkbox" value="spenat">
+                </div>
+                <div>
+                    <label for="pstruh">Pstruh</label>
+                    <input id="pstruh" name="food_4" type="checkbox" value="pstruh">
+                </div>
+                <div>
+                    <input class="register" type="submit" value="Odeslat vedoucímu">
+                </div>
+            </form>
+            <div>
+                <h4>Co s sebou</h4>
+                <ul>
+                    <li>Svačina</li>
+                    <li>Boty na turistiku</li>
+                    <li>Batoh</li>
+                    <li>Vhodné oblečení</li>
+                </ul>
+            </div>
+        {% endif %}
+        {% if session['role'] == 'rodic' and child_name != '' %}
+            {% if dochazka.dochazka != 1 %}
+                <button class="button", style="vertical-align:middle">
+                    <a class="button-dochazka" href="?dojde=true&child_id={{ child_id }}&id_event={{ akce[0].id_akce }}">
+                        <span>Přihlásit uživatele {{ child_name }} na akci</span>
+                    </a>
+                </button>
+            {% elif dochazka.dochazka == 1 %}
+                <button class="button", style="vertical-align:middle">
+                    <a class="button-dochazka" href="?dojde=false&child_id={{ child_id }}&id_event={{ akce[0].id_akce }}">
+                        <span>Odhlásit uživatele {{ child_name }} z akce</span>
+                    </a>
+                </button>
+            {% endif %}
+        {% endif %}
+    </section>
+    <section>
+        <h2>Nasledující akce</h2>
+            {% for a in akce[1:] %}
+                <ul class="events">
+                    <li>Název: {{ a.jmeno }}</li>
+                    <li>Místo: {{ a.misto }}</li>
+                    <li>Datum: {{ a.datum }}</li>
+                    <li><strong>Začátek akce: {{ a.zacatek_akce }}</strong></li>
+                    <li><strong>Konec akce: {{ a.konec_akce }}</strong></li>
+                    <li>Družiny: 
+                        {% if druziny %}
+                            {% for d in druziny if a.id_akce == d.id_akce %}
+                                {{ d.jmeno_druziny }}
+                            {% endfor %}
+                        {% endif %}
+                    </li>
+                    <li>Vedoucí:
+                        {% if a.vedouci_jmeno %}
+                            {% for vedouci in akce %}
+                                {% if vedouci.id_akce == a.id_akce %} 
+                                    <a href="{{ url_for('unregistered_user.view_home_page') }}#home-vedouci">
+                                    {{ vedouci.vedouci_jmeno }} {{ vedouci.vedouci_prijmeni}}</a>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            {{ 'žádný' }}
+                        {% endif %}
+                    </li>
+                    <li class="event-description">Popis: {{ a.popis }}</li>
+                    {% if session['role'] in ('vedouci', 'administrator') %}
+                        <li>    
+                            <a href="{{ url_for('events_more.view_attendance_page') }}?id_akce={{ a.id_akce }}&jmeno_akce={{ a.jmeno }}">Docházka</a>
+                            {% if a.je_public == 0 %}
+                                <a href="?id_akce={{ a.id_akce }}">Zveřejnit</a>
+                            {% endif %}
+                            <a href="{{ url_for('events_more.edit_event') }}?id_akce={{ a.id_akce }}">Upravit</a>
+                            <a href="{{ url_for('events_more.delete_event') }}?id_akce={{ a.id_akce }}">Smazat</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                {#
+                {% if session['role'] == 'rodic' and child_name != "" %}
+                    {% if dochazka.dochazka != 1 %}
+                        <button class="button", style="vertical-align:middle">
+                            <a class="button-dochazka" href="?dojde=true&child_id={{ child_id }}&id_event={{ a.id_akce }}">
+                                <span>Přihlásit uživatele {{ child_name }} na akci</span>
+                            </a>
+                        </button>
+                    {% elif dochazka.dochazka == 1 %}
+                        <button class="button", style="vertical-align:middle">
+                            <a class="button-dochazka" href="?dojde=false&child_id={{ child_id }}&id_event={{ a.id_akce }}">
+                                <span>Odhlásit uživatele {{ child_name }} z akce</span>
+                            </a>
+                        </button>
+                    {% endif %}
+                {% endif %}
+               #}
+            {% endfor%}
+    </section>
+{% endblock %}

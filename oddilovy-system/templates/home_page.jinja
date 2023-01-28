@@ -1,0 +1,43 @@
+{% extends '__main.jinja' %}
+
+{% block cssstyles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="kdo_jsme">
+            <h3> Kdo jsme? </h3>
+            <p> Zdraví vás <b style="color:#B8860BFF"> 1. oddíl ORLI Brno! </b> Jsme parta lidí, která ve svém volném čase a bez nároku na finanční odměnu chystá program a náplň práce pro mládež</p>
+            <p> Snažíme se mládeži předat skautské hodnoty, které jsou zakotveny ve skautských symbolech, slibu, zákonech, jako je čest, morálka, přátelství, dané slovo, slušné chování, vztah k přírodě a mnoho dalšího. Zalíbil se nám skautský ideál a snažíme se, jak nejlépe dovedeme, ho ctít a vést k němu ostatní.</p>
+            <p> Náš oddíl tvoří několik skupin dětí, kterým říkáme družiny. Mladší i starší kluci a holky se pravidelně schází na samostatných schůzkách, všichni společně jezdíme na některé výpravy a na letní tábor. </p>
+        </div>
+        <img src="static/img/kdo-jsme.jpg", alt="Oddíl Orli kdo jsme" class="napravo">
+    </section>
+
+    <section>
+        <h2> Naši vedoucí </h2>
+        <div id="home-vedouci" class="vedouci">
+            <div>
+                <h3> Martin Navrátil </h3>
+                <img src="static/img/martin.jpg">
+                <p>  Skautské oddíly vedou dobrovolníci, kteří jsou zodpovědní za bezpečnost, program a fungování oddílu. Aby se mohli stát vedoucími, musí prokázat dostatečné znalosti a kompetenci jak po stránce mentální, tak po stránce výchovné.  </p>
+            </div>
+            <div>
+                <h3> Daniil Astapenko </h3>
+                <img src="static/img/daniil.jpg">
+                <p>  Skautské oddíly vedou dobrovolníci, kteří jsou zodpovědní za bezpečnost, program a fungování oddílu. Aby se mohli stát vedoucími, musí prokázat dostatečné znalosti a kompetenci jak po stránce mentální, tak po stránce výchovné.  </p>
+            </div>
+            <div>
+                <h3> Filip Adámek </h3>
+                <img src="static/img/filip.jpg">
+                <p>  Skautské oddíly vedou dobrovolníci, kteří jsou zodpovědní za bezpečnost, program a fungování oddílu. Aby se mohli stát vedoucími, musí prokázat dostatečné znalosti a kompetenci jak po stránce mentální, tak po stránce výchovné.  </p>
+            </div>
+            <div>
+                <h3> Pavol Faško </h3>
+                <img src="static/img/pavol.jpg">
+                <p>  Skautské oddíly vedou dobrovolníci, kteří jsou zodpovědní za bezpečnost, program a fungování oddílu. Aby se mohli stát vedoucími, musí prokázat dostatečné znalosti a kompetenci jak po stránce mentální, tak po stránce výchovné.  </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

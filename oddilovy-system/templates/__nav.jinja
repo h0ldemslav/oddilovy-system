@@ -1,0 +1,39 @@
+{% block nav %}
+    <header>
+        <h1> 1. oddíl Orli </h1>
+        <span class="material-symbols-outlined">
+            {% if session['authenticated'] %}
+                <a href="{{ url_for('login.signout') }}">logout</a>
+            {% else %}
+                <a href="{{ url_for('login.view_sign_in_page') }}">account_circle</a>
+            {% endif %}
+        </span>
+
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('unregistered_user.view_home_page') }}">Domů</a></li>
+            {% if session['authenticated'] %}
+                <li><a href="{{ url_for('events_more.view_events_page') }}">Akce</a></li>
+            {% else %}
+                <li><a href="{{ url_for('unregistered_user.view_meetings_page') }}">Akce</a></li>
+            {% endif %}
+
+            {% if not session['authenticated'] %}
+                <li><a href="{{ url_for('unregistered_user.view_contacts_page') }}">Kontakt</a></li>
+            {% endif %}
+
+
+            {% if session['authenticated'] and session['role'] == 'vedouci'%}
+                <li><a href="{{ url_for('unregistered_user.view_personal_page') }}">Vedoucí</a></li>
+            {% elif session['authenticated'] and session['role'] == 'administrator'%}
+                <li><a href="{{ url_for('admin.view_admin_programs_page') }}">Správa oddílu</a></li>
+                <li><a href="{{ url_for('unregistered_user.view_personal_page') }}">Administrátor</a></li>
+            {% elif session['authenticated'] and session['role'] == 'rodic'%}
+                <li><a href="{{ url_for('unregistered_user.view_personal_page') }}">Rodič</a></li>
+            {% elif session['authenticated'] and session['role'] == 'dite'%}
+                <li><a href="{{ url_for('unregistered_user.view_personal_page') }}">Dítě</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock%}

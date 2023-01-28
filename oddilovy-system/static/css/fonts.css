@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+header h1 {
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+}

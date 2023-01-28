@@ -1,0 +1,29 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form_field.jinja' import render_field with context %}
+
+{% block cssstyles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contacts.css') }}" type="text/css">
+{% endblock %}
+
+
+{% block content %}
+    <section>
+        <h1>Napište nám!</h1>
+        <p>
+            Nejste si něčím jistí? Zajímají Vás nějaké další informace? Neváhejte nám napsat přes náš online
+            formulář! Stačí vyplnit váš e-mail a zprávu pro vedoucí a my se Vám během pár dnů ozveme zpět.
+        </p>
+        <h3> Kontaktní formulář </h3>
+        <form method=post>
+          <dl>
+            <div>
+                {{ render_field(email_form.email) }}
+            </div>
+            <div>
+                {{ render_field(email_form.zprava) }}
+            </div>
+          </dl>
+          <input class="email" type="submit" value=Odeslat mail>
+        </form>
+    </section>
+{% endblock %}

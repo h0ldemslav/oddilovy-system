@@ -1,0 +1,75 @@
+/* Login and registration */
+
+.login,
+.email {
+    background-color: rgb(184, 134, 11);
+    border: none;
+    text-decoration: none;
+    display: block;
+    width: auto;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1vh;
+    font-size: 1em;
+    font-weight: bold;
+    margin-left: 3vw;
+}
+
+.login:hover {
+    background: black;
+    color: white;
+}
+
+.register {
+    background-color: rgb(184, 134, 11);
+    border: none;
+    text-decoration: none;
+    display: block;
+    width: auto;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1vh;
+    font-size: 1em;
+    font-weight: bold;
+    margin-left: 2vw;
+}
+
+form div {
+    display: flex;
+    margin: 2vh;
+}
+
+label {
+    width: 150px;
+    display: inline-block;
+}
+
+input[type="text"], 
+input[type='number'],
+input[type='password'],
+input[type='date'],
+select {
+    border: 1px solid rgb(184, 134, 11);
+    width: auto;
+    background: rgba(225, 225, 255, 0.61);
+    border-radius: 3px;
+}
+
+textarea {
+    border: 1px solid rgb(184, 134, 11);
+    width: 15em;
+    height: 8em;
+    background: rgba(225, 225, 255, 0.61);
+    border-radius: 3px;
+    overflow: auto;
+}
+
+/* dt {
+    padding-block-end: 0.1em;
+}  */
+
+dd {
+    padding-inline-start: 6em;
+    position: relative;
+    bottom: 1.40em;
+}

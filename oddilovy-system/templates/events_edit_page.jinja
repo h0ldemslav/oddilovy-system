@@ -1,0 +1,23 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form_field.jinja' import render_field with context %}
+
+{% block cssstyles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/events_more.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Upravit akci</h2>
+        <form method=post>
+        <dl>
+          {{ render_field(edit_form.jmeno) }}
+          {{ render_field(edit_form.datum) }}
+          {{ render_field(edit_form.misto) }}
+          {{ render_field(edit_form.zacatek_akce) }}
+          {{ render_field(edit_form.konec_akce) }}
+          {{ render_field(edit_form.popis) }}
+        </dl>
+        <input class="register" type="submit" value="Uložit změny">
+      </form>
+</section>
+{% endblock %}

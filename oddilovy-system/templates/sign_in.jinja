@@ -1,0 +1,26 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form_field.jinja' import render_field with context %}
+
+{% block cssstyles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/contacts.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <section>
+      <h3> Přihlášení do systému</h3>
+      <form method=post>
+          <dl>
+            <div>
+                <span class="material-symbols-outlined">face</span>
+                {{ render_field(sign_in_form.login) }}
+            </div>
+            <div>
+                <span class="material-symbols-outlined">key</span>
+                {{ render_field(sign_in_form.password) }}
+            </div>
+          </dl>
+          <input class="login" type="submit" value=Příhlásit se>
+        </form>
+
+    </section>
+{% endblock %}

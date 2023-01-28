@@ -1,0 +1,26 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form_field.jinja' import render_field with context %}
+
+{% block content %}
+  <section>
+    <h1>Přidat akci</h1>
+    <form method=post>
+        <dl>
+          {{ render_field(form.jmeno) }}
+          {{ render_field(form.datum) }}
+          {{ render_field(form.misto) }}
+          {{ render_field(form.zacatek_akce) }}
+          {{ render_field(form.konec_akce) }}
+          {{ render_field(form.popis) }}
+          {{ render_field(form.druzina) }}
+          {{ render_field(form.vedouci) }}
+          <h3>Program akce</h3>
+          {{ render_field(form.misto_programu) }}
+          {{ render_field(form.popis_programu) }}
+          {{ render_field(form.delka) }}
+          {{ render_field(form.doporuceny_vek) }}
+        </dl>
+        <input class="register" type="submit" value="Přidat akci">
+      </form>
+  </section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% block nav %}
+    <footer>
+            <div>
+                <h2> Kde nás najdete? </h2>
+                <iframe style="border:none" src="https://frame.mapy.cz/s/cegojufove" width="330" height="280" frameborder="0"></iframe>
+            </div>
+            <div class="kontakt">
+                <h2> Kontakt </h2>
+                <p> +420 000 000 000 </p>
+                <p> email@projekt.cz </p>
+            </div>
+            <div class="sledujte_nas">
+                <h2> Sledujte nás! </h2>
+                <p>
+                    <a href="https://www.tiktok.com/@3kondorblansko"><img src="{{ url_for('static', filename='img/tiktok-logo.png') }}" alt="Tiktok Logo" width="65" height="65" /></a>
+                    <a href="https://www.instagram.com/3oddil_kondor/"><img src="{{ url_for('static', filename='img/instagram-logo.jpg') }}" alt="Instagram logo" width="65" height="65" /></a>
+                </p>
+            </div>
+    </footer>
+{% endblock%}

@@ -1,0 +1,28 @@
+{% extends '__main.jinja' %}
+
+{% block cssstyles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/events_not_signed.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <section class="uvod_akci">
+        <h3>Naše akce</h3>
+        <p>
+            Zde můžete najít akce, které náš oddíl v minulosti uspořádal.
+            Naši malí skautíci si akce velice pochvalují. Zaměřujeme se především na přátelství a nejdůležitější je, 
+            aby na akcích zažili srandu.
+        </p> 
+        <img src="static/img/akce-1.jpg" alt="Fotka z naší akce" class="uvod_fotka">
+    </section>
+    
+    <section class="o_akcich">
+        <h3>Letní tábor</h3>
+        <p>Každý rok pořádáme letní tábor, který se vždy koná o letních prázdninách. Tábor je pro více družin, děti tak poznají více dětí a mnohdy si najdou i nové kamarády. </p>
+        <p>Minulý rok jsme tábor pořádali v táborové lokaci poblíž města Mrákotín v Jihočeském kraji. Toto středisko bylo naprosto perfektní. Poblíž se nacházejí krásné lesy, kde jsme uspořádali spoustu programů pro děti. 400 metrů od střediska se nachází i rybník, kam se děti chodili každý den koupat.</p>
+        <p>Jeden z nejoblíbenějších programů byla naše celodenní bojovka. Děti během celého dne prošli blízké okolí, kde plnili různé úkoly a díky nim vždy našli lokaci dalšího úkolu. Úkoly prověřovaly jak fyzické schopnosti tak i logické schopnosti. Například měli děti seřadit lístečky největších měst v republice, díky tomu zjistili souřadnice, kde se nachází další úkol. Děti byly rozdělené do věkově vyrovnaných skupin, se kterou vždy chodil jeden z našich vedoucích aby byly děti pod kontrolou a nemohlo se nic špatného stát.</p>
+        <div class="fotky_kontejner">
+            <img src="static/img/letni_tabor.jpeg" alt="Letní tábor" class="fotka_akce">
+            <img src="static/img/zoo-brno.jpg" alt="Celodenní prohlídka brněnské ZOO" class="fotka_akce">
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% from 'macros/form_field.jinja' import render_field with context %}
+{% extends "__main.jinja" %}
+
+{% block content %}
+    <section>
+        <h2> Založit novou družinu </h2>
+        <form method="post">
+            <dl>
+                {{ render_field(form.jmeno) }}
+                {{ render_field(form.nejmladsi_vek) }}
+                {{ render_field(form.popis) }}
+            </dl>
+            <input class="register" type="submit" value="Založit">
+        </form>
+    </section>
+{% endblock %}

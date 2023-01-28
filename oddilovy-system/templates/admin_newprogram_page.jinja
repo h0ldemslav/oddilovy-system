@@ -1,0 +1,16 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form_field.jinja' import render_field with context %}
+
+{% block content %}
+  <section>
+    <form method=post>
+        <dl>
+          {{ render_field(newprogram_form.misto_programu) }}
+          {{ render_field(newprogram_form.popis) }}
+          {{ render_field(newprogram_form.delka) }}
+          {{ render_field(newprogram_form.doporuceny_vek) }}
+        </dl>
+        <input class="register" type="submit" value=Přidat>
+      </form>
+  </section>
+{% endblock %}

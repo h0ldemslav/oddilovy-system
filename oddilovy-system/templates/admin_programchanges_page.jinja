@@ -1,0 +1,17 @@
+{% extends '__main.jinja' %}
+{% from 'macros/form_field.jinja' import render_field with context %}
+
+{% block content %}
+  <section>
+    <h2>Upravit program</h2>
+      <form method=post>
+      <dl>
+          {{ render_field(edit_form.misto_programu) }}
+          {{ render_field(edit_form.popis) }}
+          {{ render_field(edit_form.delka) }}
+          {{ render_field(edit_form.doporuceny_vek) }}
+      </dl>
+      <input class="register" type="submit" value="Uložit změny">
+      </form>
+  </section>
+{% endblock %}

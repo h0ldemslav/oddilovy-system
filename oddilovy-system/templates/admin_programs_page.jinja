@@ -1,0 +1,14 @@
+{% extends '__main.jinja' %}
+
+{% block content %}
+    <section>
+        <h2>Správa oddílu</h2>
+        <ul>
+            <li><a href="{{ url_for('admin.view_admin_registration_page') }}">Vytvořit nový účet</a></li>
+            {# <li><a href="{{ url_for('admin.view_admin_newprogram_page') }}">Přidat program</a></li> #}
+            <li><a href="{{ url_for('admin.view_admin_newgroup_page') }}">Založit novou družinu</a></li>
+            <li><a href="{{ url_for('admin.view_admin_newbigevent_page') }}">Přidat akci</a></li>
+            <li><a href="{{ url_for('admin.view_admin_showprograms_page') }}">Zobrazit programy</a></li>
+        </ul>
+    </section>
+{% endblock %}
